@@ -1,0 +1,2 @@
+backend/gfpgan/weights/detection_Resnet50_Final.pth filter=lfs diff=lfs merge=lfs -text
+backend/gfpgan/weights/parsing_parsenet.pth filter=lfs diff=lfs merge=lfs -text
