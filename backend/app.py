@@ -13,6 +13,21 @@ import cv2
 import mediapipe as mp
 import numpy as np
 import torch
+
+# Monkey patch torch.load to set weights_only=False by default for PyTorch 2.6+ compatibility with GFPGAN weights
+_original_torch_load = torch.load
+def _patched_torch_load(*args, **kwargs):
+    if 'weights_only' not in kwargs:
+        kwargs['weights_only'] = False
+    try:
+        return _original_torch_load(*args, **kwargs)
+    except Exception as e:
+        if kwargs.get('weights_only', True):
+            kwargs['weights_only'] = False
+            return _original_torch_load(*args, **kwargs)
+        raise e
+torch.load = _patched_torch_load
+
 from fastapi import FastAPI, File, HTTPException, UploadFile, Request, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
@@ -361,53 +376,39 @@ def _warp_lower_face_geometry(image_bgr: np.ndarray, landmarks: np.ndarray, pred
         source_points.append(_clamp_point(anchor[0], anchor[1], w, h))
         destination_points.append(_clamp_point(anchor[0], anchor[1], w, h))
 
-    # Add stable mid-face landmarks (nose, eyes, cheekbones) as anchors to prevent eye/nose warping
-    stable_landmarks = [1, 2, 4, 5, 33, 133, 263, 362, 93, 234, 323, 454]
-    for idx in stable_landmarks:
-        if idx < landmarks.shape[0]:
-            x = float(np.clip(landmarks[idx, 0], 0.0, 1.0) * w)
-            y = float(np.clip(landmarks[idx, 1], 0.0, 1.0) * h)
-            source_points.append((x, y))
-            destination_points.append((x, y))
-
+    # Calculate face center and horizontal bounds to define a smooth, continuous displacement field
     face_center_x = float(np.mean(landmarks[:, 0]) * w)
-    face_lower_band = 0.30 * h
+    face_lower_band = 0.35 * h
 
-    for index in range(17):
+    # Iterate over all landmarks to shift the entire lower face region smoothly
+    # This prevents any mesh tearing, folding, or local triangulation shearing.
+    for index in range(landmarks.shape[0]):
         x = float(np.clip(landmarks[index, 0], 0.0, 1.0) * w)
         y = float(np.clip(landmarks[index, 1], 0.0, 1.0) * h)
         px = float(np.clip(predicted[index, 0], 0.0, 1.0) * w)
         py = float(np.clip(predicted[index, 1], 0.0, 1.0) * h)
 
+        # Base GCN prediction shift
+        dx = (px - x) * intensity
+        dy = (py - y) * intensity
+
+        # Smooth, continuous manual jaw/cheek slimming
+        # Only active in the lower face region
         lower_ratio = max(0.0, (y - face_lower_band) / max(h - face_lower_band, 1.0))
-        side_ratio = (x - face_center_x) / max(w, 1.0)
+        
+        # Horizontal distance from vertical centerline
+        dist_from_center = abs(x - face_center_x) / max(w * 0.5, 1.0)
+        
+        # Slimming direction: inward towards face centerline
+        direction = -1.0 if x > face_center_x else 1.0
+        
+        # Max slimming of 45 pixels at the outermost jawline, fading smoothly to 0 at the center
+        slimming_dx = direction * 45.0 * lower_ratio * dist_from_center * intensity
+        dx += slimming_dx
 
-        # Subtle jaw refinement: GCN predicted shift + moderate manual shift (scaled down by 75%)
-        dx = (px - x) * intensity
-        dy = (py - y) * intensity
-        dx += -side_ratio * (6.0 + 8.0 * lower_ratio) * intensity
-        dy += -(4.0 + 7.0 * lower_ratio) * intensity
-
-        if index in (6, 7, 8, 9, 10):
-            dy -= 2.0 * intensity
-
-        # Actually append the jaw points!
-        source_points.append((x, y))
-        destination_points.append(_clamp_point(x + dx, y + dy, w, h))
-
-    # Add explicit mouth anchors so the smile zone also warps visibly.
-    mouth_indices = [61, 78, 80, 82, 13, 14, 15, 17, 84, 87, 91, 95, 146, 178, 181, 199, 267, 269, 291, 308, 310, 321, 324, 375, 402, 405]
-    for index in mouth_indices:
-        if index >= landmarks.shape[0]:
-            continue
-        x = float(np.clip(landmarks[index, 0], 0.0, 1.0) * w)
-        y = float(np.clip(landmarks[index, 1], 0.0, 1.0) * h)
-        px = float(np.clip(predicted[index, 0], 0.0, 1.0) * w)
-        py = float(np.clip(predicted[index, 1], 0.0, 1.0) * h)
-
-        # For mouth/lips, use ONLY GCN predicted coordinates to prevent teeth distortion and shape defects.
-        dx = (px - x) * intensity
-        dy = (py - y) * intensity
+        # Subtle vertical lifting/refinement near chin
+        if y > 0.65 * h and dist_from_center < 0.25:
+            dy += -6.0 * lower_ratio * intensity
 
         source_points.append((x, y))
         destination_points.append(_clamp_point(x + dx, y + dy, w, h))
@@ -622,10 +623,7 @@ def _correct_image_jaw(image_bgr: np.ndarray, landmarks: np.ndarray, predicted: 
         return image_bgr
 
     # Reduced intensity to 0.35 for natural, non-distorted skeletal jaw refinement
-    warped, lower_mask = _warp_lower_face_geometry(image_bgr, landmarks, predicted, intensity=0.35)
-    if np.count_nonzero(lower_mask) > 0:
-        alpha = (lower_mask.astype(np.float32) / 255.0)[:, :, None]
-        warped = (warped.astype(np.float32) * alpha + image_bgr.astype(np.float32) * (1.0 - alpha)).astype(np.uint8)
+    warped, _ = _warp_lower_face_geometry(image_bgr, landmarks, predicted, intensity=0.35)
     
     return _restore_face_gfpgan(warped)
 
@@ -711,42 +709,12 @@ def _correct_image_teeth(image_bgr: np.ndarray, landmarks: np.ndarray, predicted
 
     # Step 2: Apply structural lower-face geometric warp on the whitened image
     # Note: Reduced intensity to 0.40 for subtle, natural clinical correction without stretching defects.
-    warped, lower_mask = _warp_lower_face_geometry(whitened, landmarks, predicted, intensity=0.40)
-    result = warped.copy()
-
-    # Step 3: Smooth structural blending with lower face (jawline)
-    final_mask = np.zeros((h, w), dtype=np.uint8)
-    cv2.rectangle(final_mask, (x1, y1), (x2, y2), 255, -1)
-    if landmarks.shape[0] >= 17:
-        jaw_pts = np.array(
-            [(int(landmarks[i, 0] * w), int(landmarks[i, 1] * h)) for i in range(0, 17)],
-            dtype=np.int32,
-        )
-        cv2.fillPoly(final_mask, [jaw_pts], 255)
-
-    if landmarks.shape[0] >= 468:
-        lip_pts = np.array(
-            [
-                (int(np.clip(landmarks[i, 0], 0.0, 1.0) * w), int(np.clip(landmarks[i, 1], 0.0, 1.0) * h))
-                for i in (61, 291, 78, 308, 13, 14, 17, 84, 87, 91, 95, 178, 181, 402, 405)
-                if i < landmarks.shape[0]
-            ],
-            dtype=np.int32,
-        )
-        if lip_pts.size > 0 and len(lip_pts) >= 3:
-            hull = cv2.convexHull(lip_pts)
-            if hull is not None and len(hull) >= 3:
-                hull_reshaped = hull.reshape(-1, 2).astype(np.int32)
-                cv2.fillConvexPoly(final_mask, hull_reshaped, 255)
-
-    final_mask = cv2.GaussianBlur(final_mask, (31, 31), 0)
-    alpha_final = (final_mask.astype(np.float32) / 255.0)[:, :, None]
-
-    # Blending the result with the original BGR image to preserve ears, hair, and neck
-    output_image = (result.astype(np.float32) * alpha_final + image_bgr.astype(np.float32) * (1.0 - alpha_final)).astype(np.uint8)
+    warped, _ = _warp_lower_face_geometry(whitened, landmarks, predicted, intensity=0.40)
 
     # Run GFPGAN Face Restoration on the warped image to make the mouth and teeth razor-sharp
-    restored_output = _restore_face_gfpgan(output_image)
+    # Note: Blending with original BGR image is removed to prevent double-mouth/teeth ghosting artifacts
+    # since the Delaunay warp already keeps the boundaries anchored perfectly.
+    restored_output = _restore_face_gfpgan(warped)
 
     # Return the output image directly without any global bilateral filters that degrade clarity.
     return restored_output
