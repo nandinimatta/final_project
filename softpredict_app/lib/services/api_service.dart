@@ -131,7 +131,7 @@ class ApiService {
       uri,
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'username': username, 'password': password}),
-    ).timeout(const Duration(seconds: 15));
+    ).timeout(const Duration(seconds: 60));
     if (response.statusCode >= 400) {
       final errorMessage = _extractErrorMessage(response.body);
       throw Exception(errorMessage);
@@ -195,7 +195,7 @@ class ApiService {
       uri,
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'username': username, 'email': email, 'password': password}),
-    ).timeout(const Duration(seconds: 15));
+    ).timeout(const Duration(seconds: 60));
     if (response.statusCode >= 400) {
       final errorMessage = _extractErrorMessage(response.body);
       throw Exception(errorMessage);
@@ -205,7 +205,7 @@ class ApiService {
 
   Future<void> deleteRecord(int id) async {
     final uri = Uri.parse('$baseUrl/records/$id');
-    final response = await http.delete(uri).timeout(const Duration(seconds: 15));
+    final response = await http.delete(uri).timeout(const Duration(seconds: 60));
     if (response.statusCode >= 400) {
       final errorMessage = _extractErrorMessage(response.body);
       throw Exception(errorMessage);
