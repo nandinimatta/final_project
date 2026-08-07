@@ -11,8 +11,8 @@ class ApiService {
   static String get baseUrl {
     final env = const String.fromEnvironment('SOFTPREDICT_API_URL');
     if (env.isNotEmpty) return env;
-    // Default to the production Render backend URL so web and mobile APKs work out-of-the-box
-    return 'https://softpredict-backend.onrender.com';
+    // Default to the production Hugging Face Space backend URL for high-RAM GFPGAN support
+    return 'https://lazytortois05-softpredict.hf.space';
   }
 
   // Legacy file-path based upload removed to keep web compatibility.
