@@ -1,5 +1,30 @@
+# Python virtual environment
 .venv/
+
+# Python cache
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
+
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Large model weights
+gfpgan/weights/*.pth
+GFPGANv1.3.pth
+softpredict_model.pth
+
+# Databases and Local Storage
+*.db
+storage/
+*.lmdb/
+*.mdb
+
+# Image files & screenshots
+*.png
+*.jpg
+*.jpeg

@@ -13,7 +13,7 @@ class ApiService {
     final env = const String.fromEnvironment('SOFTPREDICT_API_URL');
     if (env.isNotEmpty) return env;
     if (kIsWeb) return 'http://localhost:8000';
-    return 'http://127.0.0.1:8000';
+    return 'http://10.0.2.2:8000';
   }
 
   // Legacy file-path based upload removed to keep web compatibility.

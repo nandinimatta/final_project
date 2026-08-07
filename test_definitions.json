@@ -1,0 +1,2822 @@
+{
+  "APP-MOD-01": [
+    {
+      "case_id": "APP-MOD-01-TC-01",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 1",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-02",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 2",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-03",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 3",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-04",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 4",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-05",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 5",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-06",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 6",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-07",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 7",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-08",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 8",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-09",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 9",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-10",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 10",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-11",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 11",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-12",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 12",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-13",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 13",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-14",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 14",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-15",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 15",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-16",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 16",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-17",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 17",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-18",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 18",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-19",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 19",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-20",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 20",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-21",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 21",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-22",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 22",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-23",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 23",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-24",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 24",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-25",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 25",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-26",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 26",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-27",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 27",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-28",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 28",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-29",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 29",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-30",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 30",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-31",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 31",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-32",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 32",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-33",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 33",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-34",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 34",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-35",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 35",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-36",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 36",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-37",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 37",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-38",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 38",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-39",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 39",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-01-TC-40",
+      "description": "Verify Mobile App Authentication & Role Workflows execution scenario - case 40",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    }
+  ],
+  "APP-MOD-02": [
+    {
+      "case_id": "APP-MOD-02-TC-01",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 1",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-02",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 2",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-03",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 3",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-04",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 4",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-05",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 5",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-06",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 6",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-07",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 7",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-08",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 8",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-09",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 9",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-10",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 10",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-11",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 11",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-12",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 12",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-13",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 13",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-14",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 14",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-15",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 15",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-16",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 16",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-17",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 17",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-18",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 18",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-19",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 19",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-20",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 20",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-21",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 21",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-22",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 22",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-23",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 23",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-24",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 24",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-25",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 25",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-26",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 26",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-27",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 27",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-28",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 28",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-29",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 29",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-30",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 30",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-31",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 31",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-32",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 32",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-33",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 33",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-34",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 34",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-35",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 35",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-36",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 36",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-37",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 37",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-38",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 38",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-39",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 39",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-40",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 40",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-41",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 41",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-42",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 42",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-43",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 43",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-44",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 44",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-45",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 45",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-46",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 46",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-47",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 47",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-48",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 48",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-49",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 49",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-02-TC-50",
+      "description": "Verify Student Jaw & Dental Defect Case Logging & Procedure Entry execution scenario - case 50",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    }
+  ],
+  "APP-MOD-03": [
+    {
+      "case_id": "APP-MOD-03-TC-01",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 1",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-02",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 2",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-03",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 3",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-04",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 4",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-05",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 5",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-06",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 6",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-07",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 7",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-08",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 8",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-09",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 9",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-10",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 10",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-11",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 11",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-12",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 12",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-13",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 13",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-14",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 14",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-15",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 15",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-16",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 16",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-17",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 17",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-18",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 18",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-19",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 19",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-20",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 20",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-21",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 21",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-22",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 22",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-23",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 23",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-24",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 24",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-25",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 25",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-26",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 26",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-27",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 27",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-28",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 28",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-29",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 29",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-30",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 30",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-31",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 31",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-32",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 32",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-33",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 33",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-34",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 34",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-35",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 35",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-36",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 36",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-37",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 37",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-38",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 38",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-39",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 39",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-40",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 40",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-41",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 41",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-42",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 42",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-43",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 43",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-44",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 44",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-03-TC-45",
+      "description": "Verify Faculty Review, Verification & Case Approval execution scenario - case 45",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    }
+  ],
+  "APP-MOD-04": [
+    {
+      "case_id": "APP-MOD-04-TC-01",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 1",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-02",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 2",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-03",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 3",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-04",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 4",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-05",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 5",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-06",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 6",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-07",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 7",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-08",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 8",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-09",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 9",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-10",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 10",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-11",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 11",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-12",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 12",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-13",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 13",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-14",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 14",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-15",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 15",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-16",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 16",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-17",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 17",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-18",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 18",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-19",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 19",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-20",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 20",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-21",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 21",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-22",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 22",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-23",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 23",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-24",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 24",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-25",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 25",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-26",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 26",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-27",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 27",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-28",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 28",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-29",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 29",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-30",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 30",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-31",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 31",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-32",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 32",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-33",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 33",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-34",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 34",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-35",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 35",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-36",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 36",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-37",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 37",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-38",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 38",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-39",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 39",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-04-TC-40",
+      "description": "Verify Mobile Gestures, Touch Interactions & Device Controls execution scenario - case 40",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    }
+  ],
+  "APP-MOD-05": [
+    {
+      "case_id": "APP-MOD-05-TC-01",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 1",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-02",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 2",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-03",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 3",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-04",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 4",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-05",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 5",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-06",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 6",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-07",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 7",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-08",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 8",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-09",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 9",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-10",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 10",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-11",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 11",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-12",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 12",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-13",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 13",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-14",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 14",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-15",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 15",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-16",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 16",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-17",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 17",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-18",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 18",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-19",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 19",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-20",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 20",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-21",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 21",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-22",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 22",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-23",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 23",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-24",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 24",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-25",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 25",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-26",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 26",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-27",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 27",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-28",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 28",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-29",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 29",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-30",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 30",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-31",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 31",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-32",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 32",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-33",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 33",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-34",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 34",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-35",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 35",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-36",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 36",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-37",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 37",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-38",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 38",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-39",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 39",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-05-TC-40",
+      "description": "Verify Mobile Security, Storage & Biometric Protections execution scenario - case 40",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    }
+  ],
+  "APP-MOD-06": [
+    {
+      "case_id": "APP-MOD-06-TC-01",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 1",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-02",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 2",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-03",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 3",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-04",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 4",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-05",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 5",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-06",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 6",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-07",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 7",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-08",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 8",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-09",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 9",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-10",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 10",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-11",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 11",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-12",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 12",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-13",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 13",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-14",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 14",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-15",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 15",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-16",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 16",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-17",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 17",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-18",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 18",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-19",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 19",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-20",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 20",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-21",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 21",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-22",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 22",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-23",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 23",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-24",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 24",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-25",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 25",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-26",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 26",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-27",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 27",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-28",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 28",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-29",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 29",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-30",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 30",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-31",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 31",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-32",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 32",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-33",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 33",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-34",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 34",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-06-TC-35",
+      "description": "Verify Mobile Notifications, Push & Deep Linking execution scenario - case 35",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    }
+  ],
+  "APP-MOD-07": [
+    {
+      "case_id": "APP-MOD-07-TC-01",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 1",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-02",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 2",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-03",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 3",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-04",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 4",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-05",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 5",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-06",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 6",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-07",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 7",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-08",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 8",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-09",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 9",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-10",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 10",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-11",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 11",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-12",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 12",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-13",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 13",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-14",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 14",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-15",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 15",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-16",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 16",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-17",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 17",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-18",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 18",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-19",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 19",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-20",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 20",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-21",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 21",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-22",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 22",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-23",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 23",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-24",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 24",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-25",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 25",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-26",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 26",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-27",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 27",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-28",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 28",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-29",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 29",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-30",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 30",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-31",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 31",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-32",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 32",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-33",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 33",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-34",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 34",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-07-TC-35",
+      "description": "Verify Mobile Viewports, Screen Densities & OS Specs execution scenario - case 35",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    }
+  ],
+  "APP-MOD-08": [
+    {
+      "case_id": "APP-MOD-08-TC-01",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 1",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-02",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 2",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-03",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 3",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-04",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 4",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-05",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 5",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-06",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 6",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-07",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 7",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-08",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 8",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-09",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 9",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-10",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 10",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-11",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 11",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-12",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 12",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-13",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 13",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-14",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 14",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-15",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 15",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-16",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 16",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-17",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 17",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-18",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 18",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-19",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 19",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-20",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 20",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-21",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 21",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-22",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 22",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-23",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 23",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-24",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 24",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-25",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 25",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-26",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 26",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-27",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 27",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-28",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 28",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-29",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 29",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-30",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 30",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-31",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 31",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-32",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 32",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-33",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 33",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-34",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 34",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-08-TC-35",
+      "description": "Verify Offline Mode, Network Resiliency & Data Sync execution scenario - case 35",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    }
+  ],
+  "APP-MOD-09": [
+    {
+      "case_id": "APP-MOD-09-TC-01",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 1",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-02",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 2",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-03",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 3",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-04",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 4",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-05",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 5",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-06",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 6",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-07",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 7",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-08",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 8",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-09",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 9",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-10",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 10",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-11",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 11",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-12",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 12",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-13",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 13",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-14",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 14",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-15",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 15",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-16",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 16",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-17",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 17",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-18",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 18",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-19",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 19",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-20",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 20",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-21",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 21",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-22",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 22",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-23",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 23",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-24",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 24",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-25",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 25",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-26",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 26",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-27",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 27",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-28",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 28",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-29",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 29",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-30",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 30",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-31",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 31",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-32",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 32",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-33",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 33",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-34",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 34",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-35",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 35",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-36",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 36",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-37",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 37",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-38",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 38",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-39",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 39",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-09-TC-40",
+      "description": "Verify Mobile Camera, Photo Upload & Image Compression execution scenario - case 40",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    }
+  ],
+  "APP-MOD-10": [
+    {
+      "case_id": "APP-MOD-10-TC-01",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 1",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-02",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 2",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-03",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 3",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-04",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 4",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-05",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 5",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-06",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 6",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-07",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 7",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-08",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 8",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-09",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 9",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-10",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 10",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-11",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 11",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-12",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 12",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-13",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 13",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-14",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 14",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-15",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 15",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-16",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 16",
+      "priority": "P1",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-17",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 17",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-18",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 18",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-19",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 19",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-20",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 20",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-21",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 21",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-22",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 22",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-23",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 23",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-24",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 24",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-25",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 25",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-26",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 26",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-27",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 27",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-28",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 28",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-29",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 29",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-30",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 30",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-31",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 31",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-32",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 32",
+      "priority": "P2",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-33",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 33",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-34",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 34",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-35",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 35",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-36",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 36",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-37",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 37",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-38",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 38",
+      "priority": "P3",
+      "automated": true,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-39",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 39",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    },
+    {
+      "case_id": "APP-MOD-10-TC-40",
+      "description": "Verify Mobile Performance, Memory & Battery Edge Cases execution scenario - case 40",
+      "priority": "P3",
+      "automated": false,
+      "status": "PASSED"
+    }
+  ]
+}

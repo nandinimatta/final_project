@@ -28,6 +28,17 @@ def _patched_torch_load(*args, **kwargs):
         raise e
 torch.load = _patched_torch_load
 
+import sys
+try:
+    import torchvision.transforms.functional as torchvision_functional
+    sys.modules['torchvision.transforms.functional_tensor'] = torchvision_functional
+    print("[INFO] Successfully mocked torchvision.transforms.functional_tensor for BasicSR compatibility.")
+except Exception as e:
+    print(f"[WARN] Failed to mock torchvision.transforms.functional_tensor: {e}")
+
+
+
+
 from fastapi import FastAPI, File, HTTPException, UploadFile, Request, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
@@ -99,20 +110,81 @@ app.add_middleware(
 )
 
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_PATH = BASE_DIR / "softpredict_model.pth"
 DEVICE = torch.device("cpu")
+
+# Automatic Model Downloading from Hugging Face Hub
+from huggingface_hub import hf_hub_download
+
+# Patch facexlib to load detection and parsing weights from Hugging Face Hub
+try:
+    import facexlib.utils.misc as facex_misc
+    _original_load_file_from_url = facex_misc.load_file_from_url
+    
+    def _patched_load_file_from_url(url, model_dir=None, progress=True, file_name=None, save_dir=None):
+        filename = file_name or os.path.basename(url)
+        if filename in ["detection_Resnet50_Final.pth", "parsing_parsenet.pth"]:
+            try:
+                print(f"[INFO] Downloading {filename} from Hugging Face Hub (LazyTortois05/softpredict-models)...")
+                target_dir = save_dir
+                if target_dir is None:
+                    target_dir = os.path.join(facex_misc.ROOT_DIR, model_dir or 'weights')
+                
+                downloaded_path = hf_hub_download(
+                    repo_id="LazyTortois05/softpredict-models",
+                    filename=filename,
+                    local_dir=target_dir
+                )
+                print(f"[INFO] Successfully loaded {filename} at {downloaded_path}")
+                return downloaded_path
+            except Exception as e:
+                print(f"[WARN] Failed to download {filename} from Hugging Face: {e}. Falling back to default URL.")
+                return _original_load_file_from_url(url, model_dir, progress, file_name, save_dir)
+        return _original_load_file_from_url(url, model_dir, progress, file_name, save_dir)
+        
+    facex_misc.load_file_from_url = _patched_load_file_from_url
+    print("[INFO] Successfully patched facexlib to pull weights from Hugging Face.")
+except Exception as e:
+    print(f"[WARN] Could not patch facexlib: {e}")
+
+# Load SoftPredict model from Hugging Face Hub
+try:
+    print("[INFO] Downloading softpredict_model.pth from Hugging Face Hub...")
+    MODEL_PATH = Path(hf_hub_download(
+        repo_id="LazyTortois05/softpredict-models",
+        filename="softpredict_model.pth",
+        local_dir=BASE_DIR
+    ))
+except Exception as e:
+    print(f"[WARN] Failed to download softpredict_model.pth from Hugging Face: {e}. Falling back to local.")
+    MODEL_PATH = BASE_DIR / "softpredict_model.pth"
+
 MODEL, MODEL_LOADED = load_model(MODEL_PATH, DEVICE)
 ADJACENCY = build_adjacency().to(DEVICE)
 
 # GFPGAN Face Restoration Initialization
 GFPGAN_AVAILABLE = False
 restorer = None
+IS_RENDER = os.environ.get("RENDER", "false").lower() == "true"
+
 try:
+    if IS_RENDER:
+        raise ImportError("GFPGAN is disabled in Render environment to prevent OOM memory crashes.")
     from gfpgan import GFPGANer
-    # Use v1.3 because it produces highly realistic teeth, mouth contours, and skin textures
-    model_url = 'https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth'
+    # Try to load GFPGANv1.3.pth from Hugging Face Hub
+    try:
+        print("[INFO] Downloading GFPGANv1.3.pth from Hugging Face Hub...")
+        gfpgan_path = hf_hub_download(
+            repo_id="LazyTortois05/softpredict-models",
+            filename="GFPGANv1.3.pth",
+            local_dir=BASE_DIR / "gfpgan" / "weights"
+        )
+        print(f"[INFO] Loaded GFPGANv1.3.pth from HF Hub at {gfpgan_path}")
+    except Exception as e:
+        print(f"[WARN] Failed to load GFPGANv1.3.pth from HF Hub: {e}. Using default fallback URL.")
+        gfpgan_path = 'https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth'
+
     restorer = GFPGANer(
-        model_path=model_url,
+        model_path=gfpgan_path,
         upscale=1,
         arch='clean',
         channel_multiplier=2,
@@ -149,9 +221,9 @@ if HAS_MEDIAPIPE_SOLUTIONS:
             mp_face_mesh.FACEMESH_LIPS,
             mp_face_mesh.FACEMESH_LEFT_EYE,
             mp_face_mesh.FACEMESH_RIGHT_EYE,
-            mp_face_mesh.FACEMESH_LEFT_IRIS,
-            mp_face_mesh.FACEMESH_RIGHT_IRIS,
-            mp_face_mesh.FACEMESH_NOSE_BRIDGE,
+            getattr(mp_face_mesh, "FACEMESH_LEFT_IRIS", set()),
+            getattr(mp_face_mesh, "FACEMESH_RIGHT_IRIS", set()),
+            getattr(mp_face_mesh, "FACEMESH_NOSE_BRIDGE", set()),
         )
     )
 else:
@@ -195,7 +267,10 @@ def _extract_landmarks(image_bgr: np.ndarray) -> np.ndarray:
         raise HTTPException(status_code=400, detail="No face detected in the uploaded image.")
 
     landmarks = result.multi_face_landmarks[0].landmark
-    return np.array([[landmark.x, landmark.y, landmark.z] for landmark in landmarks], dtype=np.float32)
+    points = np.array([[landmark.x, landmark.y, landmark.z] for landmark in landmarks], dtype=np.float32)
+    if points.shape[0] > 468:
+        points = points[:468]
+    return points
 
 
 def _simulate_soft_tissue_movement(landmarks: np.ndarray) -> np.ndarray:
@@ -1275,4 +1350,11 @@ def delete_record(id: int):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
+
+
+# Main API App instance is exported as 'app'
+
+
+
+
 
