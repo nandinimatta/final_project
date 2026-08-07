@@ -1,16 +1,7 @@
-import sys
-import subprocess
-import os
-
-# 1. Install gradio dynamically if not present (for Hugging Face Spaces environment)
-try:
-    import gradio as gr
-except ImportError:
-    print("[INFO] Gradio not found. Installing dynamically for Hugging Face Spaces...")
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "gradio"])
-    import gradio as gr
-
+import gradio as gr
 import spaces
+import sys
+import os
 import uvicorn
 import huggingface_hub
 
