@@ -32,7 +32,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     });
 
     try {
-      final records = await _apiService.getRecords();
+      final records = await _apiService.getRecords(doctorUsername: widget.doctorName);
       if (!mounted) return;
       setState(() {
         _allRecords = records;
@@ -230,7 +230,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         label: const Text('Add Patient'),
         onPressed: () async {
           final result = await Navigator.of(context).push<bool>(
-            MaterialPageRoute(builder: (_) => const AddPatientScreen()),
+            MaterialPageRoute(builder: (_) => AddPatientScreen(doctorName: widget.doctorName)),
           );
           if (result == true) {
             _fetchRecords();

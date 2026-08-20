@@ -1,0 +1,35 @@
+# Python cache & build
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+env/
+venv/
+
+# Environment files
+.env
+*.env
+
+# Large model weights & AI models
+*.pth
+*.pt
+*.onnx
+gfpgan/
+backend/gfpgan/weights/
+backend/softpredict_model.pth
+
+# Local Database & Storage
+*.db
+*.sqlite3
+backend/medical_records.db
+backend/storage/
+
+# Node / Web / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Flutter build
+softpredict_app/build/
+softpredict_app/.dart_tool/

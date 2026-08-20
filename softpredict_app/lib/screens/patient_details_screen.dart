@@ -17,63 +17,70 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
   final PageController _pageController = PageController();
 
   Future<void> _confirmDelete(BuildContext context, int id) async {
-    final confirm = await showDialog<bool>(
+    final bool? confirm = await showDialog<bool>(
       context: context,
-      builder: (BuildContext context) {
+      builder: (ctx) {
         return AlertDialog(
-          title: const Row(
-            children: [
-              Icon(Icons.warning_amber_rounded, color: Color(0xFFDC2626)),
-              SizedBox(width: 8),
-              Text('Confirm Deletion', style: TextStyle(fontWeight: FontWeight.bold)),
-            ],
-          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          title: const Text('Delete Patient Record?',
+              style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
           content: const Text(
             'Are you sure you want to permanently delete this clinical record and all associated visualization images? This action cannot be undone.',
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Cancel', style: TextStyle(color: Color(0xFF64748B))),
-              onPressed: () => Navigator.of(context).pop(false),
+              child: const Text('Cancel',
+                  style: TextStyle(color: Color(0xFF64748B))),
+              onPressed: () => Navigator.of(ctx).pop(false),
             ),
             TextButton(
-              child: const Text('Delete', style: TextStyle(color: Color(0xFFDC2626), fontWeight: FontWeight.bold)),
-              onPressed: () => Navigator.of(context).pop(true),
+              child: const Text('Delete',
+                  style: TextStyle(
+                      color: Color(0xFFDC2626), fontWeight: FontWeight.bold)),
+              onPressed: () => Navigator.of(ctx).pop(true),
             ),
           ],
         );
       },
     );
 
-    if (confirm != true) return;
+    if (confirm != true || !mounted) return;
+    _deleteRecordWithLoader(id);
+  }
+
+  Future<void> _deleteRecordWithLoader(int id) async {
+    if (!mounted) return;
+    final messenger = ScaffoldMessenger.of(context);
+    final navigator = Navigator.of(context);
 
     // Show progress loader
     showDialog<void>(
       context: context,
       barrierDismissible: false,
-      builder: (context) => const Center(child: CircularProgressIndicator(color: Color(0xFF0F766E))),
+      builder: (ctx) => const Center(
+          child: CircularProgressIndicator(color: Color(0xFF0F766E))),
     );
 
     try {
       await ApiService().deleteRecord(id);
       if (!mounted) return;
-      
-      Navigator.of(context).pop(); // Dismiss progress loader
-      
-      ScaffoldMessenger.of(context).showSnackBar(
+
+      navigator.pop(); // Dismiss progress loader
+
+      messenger.showSnackBar(
         const SnackBar(
           content: Text('Clinical record successfully deleted.'),
           backgroundColor: Color(0xFF059669),
         ),
       );
-      
-      Navigator.of(context).pop(true); // Pop details screen and return true to refresh dashboard
+
+      navigator.pop(true); // Pop details screen and return true to refresh dashboard
     } catch (e) {
       if (!mounted) return;
-      Navigator.of(context).pop(); // Dismiss progress loader
-      ScaffoldMessenger.of(context).showSnackBar(
+      navigator.pop(); // Dismiss progress loader
+      messenger.showSnackBar(
         SnackBar(
-          content: Text('Error deleting record: $e'),
+          content: Text('Failed to delete record: $e'),
           backgroundColor: const Color(0xFFDC2626),
         ),
       );
@@ -102,7 +109,8 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
     final patientId = record['patient_id'] ?? 'N/A';
     final name = record['name'] ?? 'Unknown';
     final problem = record['problem'] ?? 'No description';
-    final treatmentMethod = (record['treatment_method'] ?? 'teeth').toString().toLowerCase();
+    final treatmentMethod =
+        (record['treatment_method'] ?? 'teeth').toString().toLowerCase();
     final age = record['age'] ?? 'N/A';
     final dob = record['dob'] ?? 'N/A';
     final gender = record['gender'] ?? 'N/A';
@@ -113,48 +121,81 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
     final afterUrl = _resolveImageUrl(record['after_url'] ?? '');
     final graphUrl = _resolveImageUrl(record['graph_url'] ?? '');
 
-    final indicatedProcedure = record['indicated_procedure'] ?? 'Maxillofacial refinement indicated';
-    final pathologySummary = record['pathology_summary'] ?? 'Skeletal structural variation';
+    final indicatedProcedure =
+        record['indicated_procedure'] ?? 'Maxillofacial refinement indicated';
+    final pathologySummary =
+        record['pathology_summary'] ?? 'Skeletal structural variation';
 
     // Parse Guidelines (Dos and Don'ts)
     List<dynamic> dos = [];
     List<dynamic> donts = [];
-    if (record['guidelines_json'] != null && record['guidelines_json'].toString().isNotEmpty) {
+    if (record['guidelines_json'] != null &&
+        record['guidelines_json'].toString().isNotEmpty) {
       try {
-        final Map<String, dynamic> guidelines = jsonDecode(record['guidelines_json'] as String) as Map<String, dynamic>;
+        final Map<String, dynamic> guidelines =
+            jsonDecode(record['guidelines_json'] as String)
+                as Map<String, dynamic>;
         dos = guidelines['dos'] as List<dynamic>? ?? [];
         donts = guidelines['donts'] as List<dynamic>? ?? [];
       } catch (e) {
-        print('Error parsing guidelines: $e');
+        debugPrint('Error parsing guidelines: $e');
       }
     }
 
     // Parse Landmark coordinate sets
     List<FacePoint> beforePoints = [];
     List<FacePoint> afterPoints = [];
-    if (record['landmarks_json'] != null && record['landmarks_json'].toString().isNotEmpty) {
+    if (record['landmarks_json'] != null &&
+        record['landmarks_json'].toString().isNotEmpty) {
       try {
-        final decoded = jsonDecode(record['landmarks_json'] as String) as List<dynamic>;
-        beforePoints = decoded.map((p) => FacePoint.fromJson(p as Map<String, dynamic>)).toList();
+        final decoded =
+            jsonDecode(record['landmarks_json'] as String) as List<dynamic>;
+        beforePoints = decoded
+            .map((p) => FacePoint.fromJson(p as Map<String, dynamic>))
+            .toList();
       } catch (e) {
-        print('Error parsing before coordinates: $e');
+        debugPrint('Error parsing before coordinates: $e');
       }
     }
-    if (record['predicted_landmarks_json'] != null && record['predicted_landmarks_json'].toString().isNotEmpty) {
+    if (record['predicted_landmarks_json'] != null &&
+        record['predicted_landmarks_json'].toString().isNotEmpty) {
       try {
-        final decoded = jsonDecode(record['predicted_landmarks_json'] as String) as List<dynamic>;
-        afterPoints = decoded.map((p) => FacePoint.fromJson(p as Map<String, dynamic>)).toList();
+        final decoded = jsonDecode(record['predicted_landmarks_json'] as String)
+            as List<dynamic>;
+        afterPoints = decoded
+            .map((p) => FacePoint.fromJson(p as Map<String, dynamic>))
+            .toList();
       } catch (e) {
-        print('Error parsing after coordinates: $e');
+        debugPrint('Error parsing after coordinates: $e');
       }
     }
 
     // List of panels to display in the carousel
     final List<Map<String, String>> panels = [
-      if (beforeUrl.isNotEmpty) {'title': 'Before (Original)', 'url': beforeUrl, 'desc': 'Original pre-treatment profile'},
-      if (meshUrl.isNotEmpty) {'title': 'Mesh Overlay', 'url': meshUrl, 'desc': 'GCN-predicted structural landmark mesh'},
-      if (afterUrl.isNotEmpty) {'title': 'After (Refined)', 'url': afterUrl, 'desc': 'Orthopedic post-treatment simulation'},
-      if (graphUrl.isNotEmpty) {'title': '3D Shape Simulation', 'url': graphUrl, 'desc': '3D depth mapping profile'},
+      if (beforeUrl.isNotEmpty)
+        {
+          'title': 'Before (Original)',
+          'url': beforeUrl,
+          'desc': 'Original pre-treatment profile'
+        },
+      if (meshUrl.isNotEmpty)
+        {
+          'title': 'Mesh Overlay',
+          'url': meshUrl,
+          'desc': 'GCN-predicted structural landmark mesh'
+        },
+      if (afterUrl.isNotEmpty)
+        {
+          'title': 'After (Refined)',
+          'url': afterUrl,
+          'desc': 'Orthopedic post-treatment simulation'
+        },
+      if (graphUrl.isNotEmpty)
+        {
+          'title': '3D Shape Simulation',
+          'url': graphUrl,
+          'desc': '3D depth mapping profile'
+        },
     ];
 
     return Scaffold(
@@ -168,7 +209,8 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.delete_forever_rounded, color: Color(0xFFFECACA)),
+            icon: const Icon(Icons.delete_forever_rounded,
+                color: Color(0xFFFECACA)),
             tooltip: 'Delete Record',
             onPressed: () => _confirmDelete(context, record['id'] as int),
           ),
@@ -182,7 +224,8 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
             // Patient Core Profile Card
             Card(
               elevation: 2,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18)),
               color: Colors.white,
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -203,17 +246,24 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 6),
                           decoration: BoxDecoration(
-                            color: treatmentMethod == 'teeth' ? const Color(0xFFECFDF5) : const Color(0xFFEFF6FF),
+                            color: treatmentMethod == 'teeth'
+                                ? const Color(0xFFECFDF5)
+                                : const Color(0xFFEFF6FF),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Text(
-                            treatmentMethod == 'teeth' ? 'ORTHODONTIC' : 'ORTHOGNATHIC',
+                            treatmentMethod == 'teeth'
+                                ? 'ORTHODONTIC'
+                                : 'ORTHOGNATHIC',
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w800,
-                              color: treatmentMethod == 'teeth' ? const Color(0xFF059669) : const Color(0xFF2563EB),
+                              color: treatmentMethod == 'teeth'
+                                  ? const Color(0xFF059669)
+                                  : const Color(0xFF2563EB),
                             ),
                           ),
                         ),
@@ -222,16 +272,21 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                     const SizedBox(height: 12),
                     const Divider(),
                     const SizedBox(height: 12),
-                    
-                    _buildProfileRow(Icons.badge_outlined, 'Hospital ID / MRN', patientId),
-                    _buildProfileRow(Icons.cake_outlined, 'Date of Birth (Age)', '$dob ($age years)'),
-                    _buildProfileRow(Icons.wc_outlined, 'Sex & Gender Identity', gender),
-                    _buildProfileRow(Icons.calendar_month_outlined, 'Record Created', createdAt),
-                    
+                    _buildProfileRow(
+                        Icons.badge_outlined, 'Hospital ID / MRN', patientId),
+                    _buildProfileRow(Icons.cake_outlined, 'Date of Birth (Age)',
+                        '$dob ($age years)'),
+                    _buildProfileRow(
+                        Icons.wc_outlined, 'Sex & Gender Identity', gender),
+                    _buildProfileRow(Icons.calendar_month_outlined,
+                        'Record Created', createdAt),
                     const SizedBox(height: 16),
                     const Text(
                       'Primary Diagnosis / Problem',
-                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Color(0xFF64748B)),
+                      style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF64748B)),
                     ),
                     const SizedBox(height: 6),
                     Container(
@@ -260,7 +315,10 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
             // Clinical Visualizations Section
             const Text(
               'Clinical Image Visualizations',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF0F172A)),
             ),
             const SizedBox(height: 12),
 
@@ -268,14 +326,16 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
             if (panels.isNotEmpty) ...[
               Card(
                 elevation: 3,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
                 clipBehavior: Clip.antiAlias,
                 color: Colors.white,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 12),
                       color: const Color(0xFFF8FAFC),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -299,8 +359,12 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: 360,
+                    Container(
+                      height: 420,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF0F172A),
+                      ),
+                      alignment: Alignment.center,
                       child: PageView.builder(
                         controller: _pageController,
                         onPageChanged: (index) {
@@ -311,14 +375,17 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                         itemCount: panels.length,
                         itemBuilder: (context, index) {
                           final panel = panels[index];
-                          return InteractiveViewer(
+                          return Center(
                             child: Image.network(
                               panel['url']!,
                               fit: BoxFit.contain,
-                              loadingBuilder: (context, child, loadingProgress) {
+                              alignment: Alignment.center,
+                              loadingBuilder:
+                                  (context, child, loadingProgress) {
                                 if (loadingProgress == null) return child;
                                 return const Center(
-                                  child: CircularProgressIndicator(color: Color(0xFF0F766E)),
+                                  child: CircularProgressIndicator(
+                                      color: Color(0xFF0F766E)),
                                 );
                               },
                               errorBuilder: (context, error, stackTrace) {
@@ -326,14 +393,18 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                                   child: Padding(
                                     padding: const EdgeInsets.all(24.0),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
-                                        Icon(Icons.broken_image_outlined, size: 48, color: Colors.grey[400]),
+                                        Icon(Icons.broken_image_outlined,
+                                            size: 48, color: Colors.grey[400]),
                                         const SizedBox(height: 12),
                                         Text(
                                           'Error loading image: ${panel['title']}',
                                           textAlign: TextAlign.center,
-                                          style: const TextStyle(color: Color(0xFF64748B), fontSize: 13),
+                                          style: const TextStyle(
+                                              color: Color(0xFF94A3B8),
+                                              fontSize: 13),
                                         ),
                                       ],
                                     ),
@@ -351,7 +422,8 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                       child: Text(
                         panels[_activePanelIndex]['desc']!,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(fontSize: 13, color: Color(0xFF475569)),
+                        style: const TextStyle(
+                            fontSize: 13, color: Color(0xFF475569)),
                       ),
                     ),
                   ],
@@ -390,17 +462,22 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
             if (beforePoints.isNotEmpty && afterPoints.isNotEmpty) ...[
               const Text(
                 'Landmark Displacement Analysis',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF0F172A)),
               ),
               const SizedBox(height: 6),
               const Text(
                 'Diagnostic overlay showing the direction and magnitude of soft-tissue landmark movement.',
-                style: TextStyle(fontSize: 13.5, color: Color(0xFF64748B), height: 1.35),
+                style: TextStyle(
+                    fontSize: 13.5, color: Color(0xFF64748B), height: 1.35),
               ),
               const SizedBox(height: 12),
               Card(
                 elevation: 2,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
                 clipBehavior: Clip.antiAlias,
                 color: Colors.white,
                 child: Column(
@@ -411,7 +488,10 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                       color: const Color(0xFF0F172A),
                       child: const Text(
                         'Landmark Motion Overlay',
-                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14),
                       ),
                     ),
                     Container(
@@ -426,7 +506,8 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 12, horizontal: 16),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -434,7 +515,9 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                           const SizedBox(width: 24),
                           _buildLegendDot(const Color(0xFFF97316), 'After'),
                           const SizedBox(width: 24),
-                          _buildLegendDot(const Color(0xFFEF4444).withOpacity(0.6), 'Movement'),
+                          _buildLegendDot(
+                              const Color(0x99EF4444),
+                              'Movement'),
                         ],
                       ),
                     ),
@@ -447,12 +530,16 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
             // Clinical Diagnosis & Surgical Treatment Plan Card
             const Text(
               'Surgical Treatment & Guidelines Plan',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF0F172A)),
             ),
             const SizedBox(height: 12),
             Card(
               elevation: 2,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18)),
               color: Colors.white,
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -462,11 +549,15 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                     // Indicated surgical procedure
                     const Row(
                       children: [
-                        Icon(Icons.assignment_outlined, color: Color(0xFF0F766E), size: 22),
+                        Icon(Icons.assignment_outlined,
+                            color: Color(0xFF0F766E), size: 22),
                         SizedBox(width: 8),
                         Text(
                           'Indicated Surgical Procedure',
-                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF0F172A)),
                         ),
                       ],
                     ),
@@ -487,11 +578,15 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                     // Pathology summary
                     const Row(
                       children: [
-                        Icon(Icons.medical_information_outlined, color: Color(0xFF0F766E), size: 22),
+                        Icon(Icons.medical_information_outlined,
+                            color: Color(0xFF0F766E), size: 22),
                         SizedBox(width: 8),
                         Text(
                           'Pathology Summary & Assessment',
-                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF0F172A)),
                         ),
                       ],
                     ),
@@ -504,7 +599,7 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                         height: 1.45,
                       ),
                     ),
-                    
+
                     // Dos and Don'ts lists
                     if (dos.isNotEmpty || donts.isNotEmpty) ...[
                       const SizedBox(height: 16),
@@ -512,11 +607,15 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                       const SizedBox(height: 16),
                       const Row(
                         children: [
-                          Icon(Icons.checklist_rtl_rounded, color: Color(0xFF0F766E), size: 22),
+                          Icon(Icons.checklist_rtl_rounded,
+                              color: Color(0xFF0F766E), size: 22),
                           SizedBox(width: 8),
                           Text(
                             'Post-Operative Recovery Guidelines',
-                            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF0F172A)),
                           ),
                         ],
                       ),
@@ -524,19 +623,33 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                       if (dos.isNotEmpty) ...[
                         const Text(
                           'CLINICAL PROTOCOLS (DOS):',
-                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF059669), letterSpacing: 0.5),
+                          style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF059669),
+                              letterSpacing: 0.5),
                         ),
                         const SizedBox(height: 6),
-                        ...dos.map((item) => _buildGuidelineRow(Icons.check_circle_outline_rounded, const Color(0xFF059669), item.toString())),
+                        ...dos.map((item) => _buildGuidelineRow(
+                            Icons.check_circle_outline_rounded,
+                            const Color(0xFF059669),
+                            item.toString())),
                         const SizedBox(height: 16),
                       ],
                       if (donts.isNotEmpty) ...[
                         const Text(
                           'CONTRAINDICATED ACTIONS (DON\'TS):',
-                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFFDC2626), letterSpacing: 0.5),
+                          style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFFDC2626),
+                              letterSpacing: 0.5),
                         ),
                         const SizedBox(height: 6),
-                        ...donts.map((item) => _buildGuidelineRow(Icons.cancel_outlined, const Color(0xFFDC2626), item.toString())),
+                        ...donts.map((item) => _buildGuidelineRow(
+                            Icons.cancel_outlined,
+                            const Color(0xFFDC2626),
+                            item.toString())),
                       ],
                     ],
                   ],
@@ -563,12 +676,18 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
             children: [
               Text(
                 label,
-                style: const TextStyle(fontSize: 11, color: Color(0xFF94A3B8), fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    fontSize: 11,
+                    color: Color(0xFF94A3B8),
+                    fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 2),
               Text(
                 value,
-                style: const TextStyle(fontSize: 14.5, fontWeight: FontWeight.bold, color: Color(0xFF334155)),
+                style: const TextStyle(
+                    fontSize: 14.5,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF334155)),
               ),
             ],
           ),
@@ -589,7 +708,10 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
         const SizedBox(width: 6),
         Text(
           label,
-          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF475569)),
+          style: const TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF475569)),
         ),
       ],
     );
@@ -606,7 +728,8 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
           Expanded(
             child: Text(
               text,
-              style: const TextStyle(fontSize: 13.5, height: 1.35, color: Color(0xFF334155)),
+              style: const TextStyle(
+                  fontSize: 13.5, height: 1.35, color: Color(0xFF334155)),
             ),
           ),
         ],

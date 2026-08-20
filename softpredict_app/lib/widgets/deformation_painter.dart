@@ -77,18 +77,18 @@ class DeformationPainter extends CustomPainter {
     // 2. Define paints
     // Thick, semi-transparent red band for displacement movement
     final movementPaint = Paint()
-      ..color = const Color(0xFFEF4444).withOpacity(0.32)
+      ..color = const Color(0x52EF4444)
       ..strokeWidth = 22.0
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke;
 
     final linePaintBefore = Paint()
-      ..color = const Color(0xFF14B8A6).withOpacity(0.4)
+      ..color = const Color(0x6614B8A6)
       ..strokeWidth = 2.0
       ..style = PaintingStyle.stroke;
 
     final linePaintAfter = Paint()
-      ..color = const Color(0xFFF97316).withOpacity(0.4)
+      ..color = const Color(0x66F97316)
       ..strokeWidth = 2.0
       ..style = PaintingStyle.stroke;
 

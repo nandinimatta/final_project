@@ -48,15 +48,25 @@ cd "c:\Users\Naveen Kumar S\OneDrive\Dokumen\medicalAI\backend"
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-## Flutter API URL
+## Mobile Setup & USB Testing (5G Cellular & USB Cable)
 
-- Android emulator: `http://10.0.2.2:8000`
-- Real phone on same Wi-Fi: use the laptop IP address, for example `http://192.168.1.20:8000`
+1. **Enable Windows Developer Mode**:
+   Go to `Windows Settings` -> `Privacy & Security` -> `For Developers` -> Turn **ON** Developer Mode.
+
+2. **USB Port Forwarding (ADB Reverse)**:
+   When running the mobile app over USB cable (especially when mobile is connected to 5G cellular data), run ADB reverse to route requests to your laptop backend:
+   ```powershell
+   adb reverse tcp:8000 tcp:8000
+   ```
+
+3. **Backend Authentication Details**:
+   - Default Doctor Username: `doctor123`
+   - Default Doctor Password: `password123`
 
 You can pass the URL with:
 
 ```powershell
-flutter run --dart-define=SOFTPREDICT_API_URL=http://10.0.2.2:8000
+flutter run --dart-define=SOFTPREDICT_API_URL=http://127.0.0.1:8000
 ```
 
 ## Colab to laptop handoff

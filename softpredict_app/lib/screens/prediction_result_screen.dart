@@ -28,7 +28,6 @@ class PredictionResultScreen extends StatefulWidget {
 class _PredictionResultScreenState extends State<PredictionResultScreen> {
   final GlobalKey _afterRepaintKey = GlobalKey();
 
-  Uint8List? _beforeImageBytes;
   Uint8List? _meshImageBytes;
   Uint8List? _afterImageBytes;
   String? _correctionError;
@@ -54,7 +53,6 @@ class _PredictionResultScreenState extends State<PredictionResultScreen> {
       }
 
       setState(() {
-        _beforeImageBytes = images['before'];
         _meshImageBytes = images['mesh'];
         _afterImageBytes = images['after'];
         _correctionError = null;
@@ -72,68 +70,7 @@ class _PredictionResultScreenState extends State<PredictionResultScreen> {
     }
   }
 
-  Future<Uint8List> _buildEmergencyCorrection(Uint8List bytes) async {
-    final codec = await ui.instantiateImageCodec(bytes);
-    final frame = await codec.getNextFrame();
-    final image = frame.image;
 
-    final recorder = ui.PictureRecorder();
-    final canvas = Canvas(recorder);
-    final width = image.width.toDouble();
-    final height = image.height.toDouble();
-
-    canvas.drawImage(image, Offset.zero, Paint());
-
-    final lowerTop = height * 0.46;
-    final lowerHeight = height - lowerTop;
-    final sourceRect = Rect.fromLTWH(0, lowerTop, width, lowerHeight);
-    final transformedRect = Rect.fromLTWH(width * 0.0, lowerTop - height * 0.02, width, lowerHeight * 1.10);
-
-    final lowerPaint = Paint()
-      ..filterQuality = FilterQuality.high
-      ..colorFilter = const ColorFilter.matrix(<double>[
-        1.18, 0, 0, 0, 24,
-        0, 1.08, 0, 0, 18,
-        0, 0, 0.80, 0, 32,
-        0, 0, 0, 1, 0,
-      ]);
-
-    canvas.save();
-    canvas.clipRect(Rect.fromLTWH(0, lowerTop, width, lowerHeight));
-    canvas.translate(width * -0.06, height * 0.015);
-    canvas.scale(1.12, 1.14);
-    canvas.drawImageRect(image, sourceRect, transformedRect, lowerPaint);
-    canvas.restore();
-
-    // Soft mouth enhancement: draw a rounded, feathered mouth overlay
-    final mouthRect = Rect.fromLTWH(width * 0.24, height * 0.56, width * 0.52, height * 0.18);
-    final mouthSource = Rect.fromLTWH(width * 0.24, height * 0.56, width * 0.52, height * 0.18);
-    final mouthPaint = Paint()
-      ..filterQuality = FilterQuality.high
-      ..colorFilter = const ColorFilter.matrix(<double>[
-        1.12, 0, 0, 0, 26,
-        0, 1.06, 0, 0, 18,
-        0, 0, 0.82, 0, 34,
-        0, 0, 0, 1, 0,
-      ])
-      // a subtle mask blur to remove hard rectangle edges
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8.0);
-
-    canvas.saveLayer(mouthRect, Paint());
-    // Use a rounded rect clip to avoid boxy edges, then draw the mouth area
-    canvas.clipRRect(RRect.fromRectXY(mouthRect, 18.0, 18.0));
-    canvas.drawImageRect(image, mouthSource, mouthRect, mouthPaint);
-    canvas.restore();
-
-    final picture = recorder.endRecording();
-    final rendered = await picture.toImage(image.width, image.height);
-    final byteData = await rendered.toByteData(format: ui.ImageByteFormat.png);
-    if (byteData == null) {
-      throw StateError('Failed to render emergency correction preview.');
-    }
-
-    return byteData.buffer.asUint8List();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -432,103 +369,7 @@ class _SectionHeader extends StatelessWidget {
   }
 }
 
-class _MedicalPhotoCard extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final String badgeText;
-  final Uint8List imageBytes;
-  final bool loading;
-  final String? errorText;
 
-  const _MedicalPhotoCard({
-    required this.title,
-    required this.subtitle,
-    required this.badgeText,
-    required this.imageBytes,
-    this.loading = false,
-    this.errorText,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 1.2,
-      color: const Color(0xFFFBFDFF),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-      clipBehavior: Clip.antiAlias,
-      child: Padding(
-        padding: const EdgeInsets.all(14),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
-                      ),
-                      const SizedBox(height: 3),
-                      Text(
-                        subtitle,
-                        style: const TextStyle(fontSize: 12.5, color: Colors.black54),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFE0F2FE),
-                    borderRadius: BorderRadius.circular(999),
-                  ),
-                  child: Text(
-                    badgeText,
-                    style: const TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w800,
-                      color: Color(0xFF075985),
-                      letterSpacing: 0.3,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 12),
-            AspectRatio(
-              aspectRatio: 1,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(14),
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Image.memory(imageBytes, fit: BoxFit.cover),
-                    if (loading)
-                      Container(
-                        color: Colors.white.withValues(alpha: 0.58),
-                        alignment: Alignment.center,
-                        child: const CircularProgressIndicator(strokeWidth: 2.4),
-                      ),
-                  ],
-                ),
-              ),
-            ),
-            if (errorText != null && errorText!.isNotEmpty) ...[
-              const SizedBox(height: 10),
-              Text(
-                'Correction status: $errorText',
-                style: const TextStyle(fontSize: 12.5, color: Color(0xFFB91C1C)),
-              ),
-            ],
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 Future<bool> _captureAndSave(GlobalKey key) async {
   try {

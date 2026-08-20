@@ -57,8 +57,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -142,12 +140,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           const SizedBox(height: 20),
                         ],
 
-                        // Doctor ID Input
+                        // Doctor ID / Email Input
                         TextFormField(
                           controller: _idController,
-                          keyboardType: TextInputType.text,
+                          keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
-                            labelText: 'Doctor Username',
+                            labelText: 'Doctor Username or Email',
                             prefixIcon: const Icon(Icons.badge_outlined, color: Color(0xFF0F766E)),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -163,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           validator: (value) {
                             if (value == null || value.trim().isEmpty) {
-                              return 'Please enter your Doctor ID';
+                              return 'Please enter your Doctor Username or Email';
                             }
                             return null;
                           },

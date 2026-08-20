@@ -24,6 +24,9 @@ storage/
 *.lmdb/
 *.mdb
 
+# Environment & Secrets
+.env
+
 # Image files & screenshots
 *.png
 *.jpg

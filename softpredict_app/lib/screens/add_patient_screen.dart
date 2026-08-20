@@ -4,7 +4,8 @@ import 'package:image_picker/image_picker.dart';
 import '../services/api_service.dart';
 
 class AddPatientScreen extends StatefulWidget {
-  const AddPatientScreen({super.key});
+  final String? doctorName;
+  const AddPatientScreen({super.key, this.doctorName});
 
   @override
   State<AddPatientScreen> createState() => _AddPatientScreenState();
@@ -84,6 +85,7 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
         _selectedImageName = picked.name;
       });
     } catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error selecting image: $e')),
       );
@@ -118,6 +120,7 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
         gender: _selectedGender,
         problem: _problemController.text.trim(),
         treatmentMethod: _selectedTreatmentMethod,
+        doctorUsername: widget.doctorName,
       );
 
       if (!mounted) return;
@@ -332,7 +335,7 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
 
             // Gender Identity Dropdown
             DropdownButtonFormField<String>(
-              value: _selectedGender,
+              initialValue: _selectedGender,
               decoration: _inputDecoration('Biological Sex & Gender Identity', Icons.wc_outlined),
               items: <String>['Male', 'Female', 'Transgender', 'Non-binary', 'Other']
                   .map<DropdownMenuItem<String>>((String value) {
@@ -388,7 +391,7 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
 
             // Modality Dropdown
             DropdownButtonFormField<String>(
-              value: _selectedTreatmentMethod,
+              initialValue: _selectedTreatmentMethod,
               decoration: _inputDecoration('Orthopedic Refinement Modality', Icons.settings_accessibility_rounded),
               items: const [
                 DropdownMenuItem(

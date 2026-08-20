@@ -29,6 +29,10 @@ def _patched_torch_load(*args, **kwargs):
 torch.load = _patched_torch_load
 
 import sys
+BASE_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(BASE_DIR))
+sys.path.insert(0, str(BASE_DIR / "BasicSR"))
+
 try:
     import torchvision.transforms.functional as torchvision_functional
     sys.modules['torchvision.transforms.functional_tensor'] = torchvision_functional
@@ -51,10 +55,51 @@ from model import build_adjacency, load_model
 
 app = FastAPI(title="SoftPredict Backend", version="1.0.0")
 
-BASE_DIR = Path(__file__).resolve().parent
-DB_PATH = BASE_DIR / "medical_records.db"
-STORAGE_DIR = BASE_DIR / "storage"
-STORAGE_DIR.mkdir(parents=True, exist_ok=True)
+# Import DB & System Configuration
+from config import BASE_DIR, DB_PATH, STORAGE_DIR, MONGO_URI, MONGO_DB_NAME
+
+# MongoDB Atlas Configuration
+mongo_client = None
+mongo_db = None
+
+try:
+    from pymongo import MongoClient
+    import re as pymongo_re
+    try:
+        import certifi
+        ca_file = certifi.where()
+    except Exception:
+        ca_file = None
+
+    mongo_kwargs = {
+        "serverSelectionTimeoutMS": 4000,
+        "connectTimeoutMS": 4000,
+        "socketTimeoutMS": 4000,
+    }
+    if ca_file:
+        mongo_kwargs["tlsCAFile"] = ca_file
+
+    mongo_client = MongoClient(MONGO_URI, **mongo_kwargs)
+    test_db = mongo_client[MONGO_DB_NAME]
+    test_db.command("ping")
+    mongo_db = test_db
+
+    # Seed default doctors in MongoDB
+    mongo_db["doctors"].update_one(
+        {"username": "doctor123"},
+        {"$set": {"username": "doctor123", "password": "password123", "email": "doctor123@clinical.org"}},
+        upsert=True
+    )
+    mongo_db["doctors"].update_one(
+        {"username": "doc_official"},
+        {"$set": {"username": "doc_official", "password": "admin123", "email": "official@clinical.org"}},
+        upsert=True
+    )
+    print(f"[INFO] MongoDB Atlas connected successfully to database '{MONGO_DB_NAME}'.")
+except Exception as e:
+    mongo_db = None
+    print(f"[WARN] Could not connect to MongoDB Atlas cloud DB (using local SQLite fallback): {e}")
+
 
 def init_db():
     conn = sqlite3.connect(str(DB_PATH))
@@ -91,10 +136,44 @@ def init_db():
             guidelines_json TEXT,
             landmarks_json TEXT,
             predicted_landmarks_json TEXT,
-            created_at TEXT
+            created_at TEXT,
+            doctor_username TEXT
         )
     """)
+    
+    # Auto-migrate existing database if doctor_username column is missing
+    cursor.execute("PRAGMA table_info(records)")
+    columns = [row[1] for row in cursor.fetchall()]
+    if "doctor_username" not in columns:
+        cursor.execute("ALTER TABLE records ADD COLUMN doctor_username TEXT")
+
     conn.commit()
+    
+    # Sync SQLite records into MongoDB if MongoDB is available
+    if mongo_db is not None:
+        try:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM records")
+            for row in cursor.fetchall():
+                r_dict = dict(row)
+                mongo_db["records"].update_one(
+                    {"id": r_dict["id"]},
+                    {"$set": r_dict},
+                    upsert=True
+                )
+            cursor.execute("SELECT * FROM doctors")
+            for row in cursor.fetchall():
+                d_dict = dict(row)
+                mongo_db["doctors"].update_one(
+                    {"username": d_dict["username"]},
+                    {"$set": d_dict},
+                    upsert=True
+                )
+            print("[INFO] Synced SQLite data to MongoDB Atlas.")
+        except Exception as ex:
+            print(f"[WARN] Failed to sync data to MongoDB: {ex}")
+
     conn.close()
 
 init_db()
@@ -975,33 +1054,6 @@ async def correct(request: Request, file: UploadFile = File(...), method: str = 
         raise HTTPException(status_code=500, detail=f"Server error: {type(e).__name__}: {str(e)}")
 
 
-class LoginRequest(BaseModel):
-    username: str
-    password: str
-
-
-@app.post("/login")
-def login(payload: LoginRequest):
-    try:
-        conn = sqlite3.connect(str(DB_PATH))
-        cursor = conn.cursor()
-        cursor.execute("SELECT username FROM doctors WHERE username = ? AND password = ?", (payload.username, payload.password))
-        row = cursor.fetchone()
-        conn.close()
-        if not row:
-            raise HTTPException(status_code=401, detail="Invalid doctor credentials")
-        return {
-            "status": "ok",
-            "message": "Login successful",
-            "doctor": {
-                "username": row[0]
-            }
-        }
-    except HTTPException:
-        raise
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
-
 
 @app.post("/records/create")
 async def create_record(
@@ -1013,6 +1065,7 @@ async def create_record(
     gender: str = Form(...),
     problem: str = Form(...),
     treatment_method: str = Form(...),
+    doctor_username: str = Form(None),
     flow: str = Form(None),
     file: UploadFile = File(...)
 ):
@@ -1123,12 +1176,10 @@ async def create_record(
 
         # Save files to storage folder
         timestamp = int(time.time())
-        sanitized_pid = "".join(c for c in patient_id if c.isalnum() or c in ("-", "_"))
-
-        before_name = f"{sanitized_pid}_{timestamp}_before.png"
-        mesh_name = f"{sanitized_pid}_{timestamp}_mesh.png"
-        after_name = f"{sanitized_pid}_{timestamp}_after.png"
-        graph_name = f"{sanitized_pid}_{timestamp}_graph.png"
+        before_name = f"{patient_id}_{timestamp}_before.png"
+        mesh_name = f"{patient_id}_{timestamp}_mesh.png"
+        after_name = f"{patient_id}_{timestamp}_after.png"
+        graph_name = f"{patient_id}_{timestamp}_graph.png" if after_graph_bytes else ""
 
         cv2.imwrite(str(STORAGE_DIR / before_name), before_panel)
         cv2.imwrite(str(STORAGE_DIR / mesh_name), mesh_panel)
@@ -1185,7 +1236,7 @@ async def create_record(
         landmarks_json = json.dumps(_to_point_list(landmarks))
         predicted_landmarks_json = json.dumps(_to_point_list(predicted))
 
-        # Write to SQLite DB
+        # Write to SQLite DB & MongoDB Atlas
         conn = sqlite3.connect(str(DB_PATH))
         cursor = conn.cursor()
         cursor.execute("""
@@ -1193,17 +1244,49 @@ async def create_record(
                 patient_id, name, age, dob, gender, problem, treatment_method,
                 before_path, mesh_path, after_path, graph_path,
                 indicated_procedure, pathology_summary, guidelines_json,
-                landmarks_json, predicted_landmarks_json, created_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+                landmarks_json, predicted_landmarks_json, doctor_username, created_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
         """, (
             patient_id, name, age, dob, gender, problem, treatment_method,
-            before_name, mesh_name, after_name, graph_name if after_graph_bytes else "",
+            before_name, mesh_name, after_name, graph_name,
             indicated_procedure, pathology_summary, guidelines_json,
-            landmarks_json, predicted_landmarks_json
+            landmarks_json, predicted_landmarks_json, doctor_username
         ))
         record_id = cursor.lastrowid
         conn.commit()
         conn.close()
+
+        created_iso = datetime.utcnow().isoformat() + "Z"
+
+        if mongo_db is not None:
+            try:
+                mongo_db["records"].update_one(
+                    {"id": record_id},
+                    {"$set": {
+                        "id": record_id,
+                        "patient_id": patient_id,
+                        "name": name,
+                        "age": age,
+                        "dob": dob,
+                        "gender": gender,
+                        "problem": problem,
+                        "treatment_method": treatment_method,
+                        "before_path": before_name,
+                        "mesh_path": mesh_name,
+                        "after_path": after_name,
+                        "graph_path": graph_name,
+                        "indicated_procedure": indicated_procedure,
+                        "pathology_summary": pathology_summary,
+                        "guidelines_json": guidelines_json,
+                        "landmarks_json": landmarks_json,
+                        "predicted_landmarks_json": predicted_landmarks_json,
+                        "doctor_username": doctor_username,
+                        "created_at": created_iso
+                    }},
+                    upsert=True
+                )
+            except Exception as ex:
+                print(f"[WARN] Failed to sync new record to MongoDB: {ex}")
 
         base_url_str = str(request.base_url).rstrip('/')
 
@@ -1218,6 +1301,7 @@ async def create_record(
             "gender": gender,
             "problem": problem,
             "treatment_method": treatment_method,
+            "doctor_username": doctor_username,
             "before_url": f"{base_url_str}/storage/{before_name}",
             "mesh_url": f"{base_url_str}/storage/{mesh_name}",
             "after_url": f"{base_url_str}/storage/{after_name}",
@@ -1227,7 +1311,7 @@ async def create_record(
             "guidelines_json": guidelines_json,
             "landmarks_json": landmarks_json,
             "predicted_landmarks_json": predicted_landmarks_json,
-            "created_at": datetime.utcnow().isoformat() + "Z"
+            "created_at": created_iso
         }
     except Exception as e:
         print(f"[ERROR] in /records/create: {type(e).__name__}: {str(e)}")
@@ -1237,16 +1321,91 @@ async def create_record(
 
 
 @app.get("/records")
-def get_records(request: Request):
+def get_records(request: Request, doctor_username: str = None):
     try:
+        base_url_str = str(request.base_url).rstrip('/')
+
+        # 1. MongoDB Atlas Primary Query
+        if mongo_db is not None:
+            try:
+                query = {}
+                if doctor_username and doctor_username.strip():
+                    doc_id = doctor_username.strip()
+                    doc_info = mongo_db["doctors"].find_one({
+                        "$or": [
+                            {"username": {"$regex": f"^{pymongo_re.escape(doc_id)}$", "$options": "i"}},
+                            {"email": {"$regex": f"^{pymongo_re.escape(doc_id)}$", "$options": "i"}}
+                        ]
+                    })
+                    if doc_info:
+                        u_name = doc_info.get("username", "")
+                        u_email = doc_info.get("email", "")
+                        query = {
+                            "$or": [
+                                {"doctor_username": {"$regex": f"^{pymongo_re.escape(u_name)}$", "$options": "i"}},
+                                {"doctor_username": {"$regex": f"^{pymongo_re.escape(u_email)}$", "$options": "i"}}
+                            ]
+                        }
+                    else:
+                        query = {"doctor_username": {"$regex": f"^{pymongo_re.escape(doc_id)}$", "$options": "i"}}
+                
+                cursor = mongo_db["records"].find(query).sort("id", -1)
+                records = []
+                for doc in cursor:
+                    records.append({
+                        "id": doc.get("id"),
+                        "patient_id": doc.get("patient_id", ""),
+                        "name": doc.get("name", ""),
+                        "age": doc.get("age", 0),
+                        "dob": doc.get("dob", ""),
+                        "gender": doc.get("gender", ""),
+                        "problem": doc.get("problem", ""),
+                        "treatment_method": doc.get("treatment_method", ""),
+                        "doctor_username": doc.get("doctor_username", ""),
+                        "before_url": f"{base_url_str}/storage/{doc['before_path']}" if doc.get('before_path') else "",
+                        "mesh_url": f"{base_url_str}/storage/{doc['mesh_path']}" if doc.get('mesh_path') else "",
+                        "after_url": f"{base_url_str}/storage/{doc['after_path']}" if doc.get('after_path') else "",
+                        "graph_url": f"{base_url_str}/storage/{doc['graph_path']}" if doc.get('graph_path') else "",
+                        "indicated_procedure": doc.get("indicated_procedure", ""),
+                        "pathology_summary": doc.get("pathology_summary", ""),
+                        "guidelines_json": doc.get("guidelines_json", ""),
+                        "landmarks_json": doc.get("landmarks_json", ""),
+                        "predicted_landmarks_json": doc.get("predicted_landmarks_json", ""),
+                        "created_at": doc.get("created_at", "")
+                    })
+                return {"status": "ok", "records": records}
+            except Exception as ex:
+                print(f"[WARN] Failed to read records from MongoDB Atlas: {ex}")
+
+        # 2. SQLite Fallback Query
         conn = sqlite3.connect(str(DB_PATH))
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM records ORDER BY id DESC")
+
+        if doctor_username and doctor_username.strip():
+            doc_id = doctor_username.strip()
+            cursor.execute(
+                "SELECT username, email FROM doctors WHERE LOWER(username) = LOWER(?) OR LOWER(email) = LOWER(?)",
+                (doc_id, doc_id)
+            )
+            doc_info = cursor.fetchone()
+            if doc_info:
+                u_name = doc_info["username"]
+                u_email = doc_info["email"]
+                cursor.execute(
+                    "SELECT * FROM records WHERE LOWER(doctor_username) = LOWER(?) OR LOWER(doctor_username) = LOWER(?) ORDER BY id DESC",
+                    (u_name, u_email)
+                )
+            else:
+                cursor.execute(
+                    "SELECT * FROM records WHERE LOWER(doctor_username) = LOWER(?) ORDER BY id DESC",
+                    (doc_id,)
+                )
+        else:
+            cursor.execute("SELECT * FROM records ORDER BY id DESC")
+            
         rows = cursor.fetchall()
         conn.close()
-
-        base_url_str = str(request.base_url).rstrip('/')
 
         records = []
         for row in rows:
@@ -1259,6 +1418,7 @@ def get_records(request: Request):
                 "gender": row["gender"],
                 "problem": row["problem"],
                 "treatment_method": row["treatment_method"],
+                "doctor_username": row["doctor_username"] if "doctor_username" in row.keys() else "",
                 "before_url": f"{base_url_str}/storage/{row['before_path']}" if row['before_path'] else "",
                 "mesh_url": f"{base_url_str}/storage/{row['mesh_path']}" if row['mesh_path'] else "",
                 "after_url": f"{base_url_str}/storage/{row['after_path']}" if row['after_path'] else "",
@@ -1278,6 +1438,69 @@ def get_records(request: Request):
         raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 
 
+class LoginRequest(BaseModel):
+    username: str
+    password: str
+
+
+@app.post("/login")
+def login(payload: LoginRequest):
+    try:
+        identifier = payload.username.strip()
+
+        # 1. Try MongoDB Atlas First
+        if mongo_db is not None:
+            try:
+                user = mongo_db["doctors"].find_one({
+                    "$or": [
+                        {"username": {"$regex": f"^{pymongo_re.escape(identifier)}$", "$options": "i"}},
+                        {"email": {"$regex": f"^{pymongo_re.escape(identifier)}$", "$options": "i"}}
+                    ]
+                })
+                if user:
+                    if user.get("password") != payload.password:
+                        raise HTTPException(status_code=401, detail="Invalid doctor username/email or password")
+                    return {
+                        "status": "ok",
+                        "message": "Login successful",
+                        "doctor": {
+                            "username": user.get("username"),
+                            "email": user.get("email")
+                        }
+                    }
+            except HTTPException:
+                raise
+            except Exception as ex:
+                print(f"[WARN] Failed to authenticate via MongoDB Atlas: {ex}")
+
+        # 2. SQLite Fallback
+        conn = sqlite3.connect(str(DB_PATH))
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT * FROM doctors WHERE LOWER(username) = LOWER(?) OR LOWER(email) = LOWER(?)",
+            (identifier, identifier)
+        )
+        user = cursor.fetchone()
+        conn.close()
+
+        if not user or user["password"] != payload.password:
+            raise HTTPException(status_code=401, detail="Invalid doctor username/email or password")
+
+        return {
+            "status": "ok",
+            "message": "Login successful",
+            "doctor": {
+                "username": user["username"],
+                "email": user["email"]
+            }
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
+
+
 class RegisterRequest(BaseModel):
     username: str
     password: str
@@ -1287,24 +1510,57 @@ class RegisterRequest(BaseModel):
 @app.post("/register")
 def register(payload: RegisterRequest):
     try:
+        u_name = payload.username.strip()
+        u_email = payload.email.strip()
+
+        # 1. Try MongoDB Atlas First
+        if mongo_db is not None:
+            try:
+                existing = mongo_db["doctors"].find_one({
+                    "$or": [
+                        {"username": {"$regex": f"^{pymongo_re.escape(u_name)}$", "$options": "i"}},
+                        {"email": {"$regex": f"^{pymongo_re.escape(u_email)}$", "$options": "i"}}
+                    ]
+                })
+                if existing:
+                    raise HTTPException(status_code=400, detail="Doctor username or email already registered")
+
+                mongo_db["doctors"].update_one(
+                    {"username": u_name},
+                    {"$set": {"username": u_name, "password": payload.password, "email": u_email}},
+                    upsert=True
+                )
+            except HTTPException:
+                raise
+            except Exception as ex:
+                print(f"[WARN] Failed to write registration to MongoDB Atlas: {ex}")
+
+        # 2. Dual Write to SQLite
         conn = sqlite3.connect(str(DB_PATH))
         cursor = conn.cursor()
-        
-        # Check if user already exists
-        cursor.execute("SELECT username FROM doctors WHERE username = ?", (payload.username,))
+        cursor.execute(
+            "SELECT username FROM doctors WHERE LOWER(username) = LOWER(?) OR LOWER(email) = LOWER(?)",
+            (u_name, u_email)
+        )
         if cursor.fetchone():
             conn.close()
-            raise HTTPException(status_code=400, detail="Doctor username already registered")
-            
-        cursor.execute("INSERT INTO doctors (username, password, email) VALUES (?, ?, ?)", (payload.username, payload.password, payload.email))
+            # If already inserted by MongoDB above, return success directly
+            return {
+                "status": "ok",
+                "message": "Doctor registered successfully",
+                "doctor": {"username": u_name, "email": u_email}
+            }
+
+        cursor.execute("INSERT INTO doctors (username, password, email) VALUES (?, ?, ?)", (u_name, payload.password, u_email))
         conn.commit()
         conn.close()
+
         return {
             "status": "ok",
             "message": "Doctor registered successfully",
             "doctor": {
-                "username": payload.username,
-                "email": payload.email
+                "username": u_name,
+                "email": u_email
             }
         }
     except HTTPException:
@@ -1316,6 +1572,13 @@ def register(payload: RegisterRequest):
 @app.delete("/records/{id}")
 def delete_record(id: int):
     try:
+        # Delete from MongoDB Atlas
+        if mongo_db is not None:
+            try:
+                mongo_db["records"].delete_one({"id": id})
+            except Exception as ex:
+                print(f"[WARN] Failed to delete record from MongoDB Atlas: {ex}")
+
         conn = sqlite3.connect(str(DB_PATH))
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
@@ -1325,7 +1588,10 @@ def delete_record(id: int):
         row = cursor.fetchone()
         if not row:
             conn.close()
-            raise HTTPException(status_code=404, detail="Record not found")
+            return {
+                "status": "ok",
+                "message": f"Patient record {id} deleted successfully."
+            }
             
         # Delete files
         for path_key in ["before_path", "mesh_path", "after_path", "graph_path"]:
